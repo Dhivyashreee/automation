@@ -31,8 +31,7 @@ public class JQueryDatePicker {
     public void jQDatePicker() {
         WebElement iframe_element = driver.findElement(By.xpath("//iframe[@class = 'demo-frame']"));
         driver.switchTo().frame(iframe_element);
-        WebElement datebox = driver.findElement(By.id("datepicker"));
-        datebox.click();
+        driver.findElement(By.id("datepicker")).click();
 
         WebElement next_button = driver.findElement(By.xpath("//a[@class='ui-datepicker-next ui-corner-all']"));
         next_button.click();
@@ -44,8 +43,12 @@ public class JQueryDatePicker {
 
         WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(60));
 
+        WebElement datebox = driver.findElement(By.id("datepicker"));
+        datebox.click();
+
         String string = datebox.getText();
         System.out.println(string);
+        driver.switchTo().defaultContent();
 
             driver.quit();
 
