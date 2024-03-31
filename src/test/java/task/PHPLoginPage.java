@@ -1,19 +1,16 @@
 package task;
 
-import net.bytebuddy.asm.Advice;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.testng.Assert;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
 import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 
 import static org.openqa.selenium.Keys.ENTER;
 
@@ -22,7 +19,7 @@ public class PHPLoginPage {
     WebDriver driver;
     WebElement number1, number2, element;
     @Test
-    public void LoginForm() throws Exception {
+    public void LoginForm() throws InterruptedException {
 
         driver = new ChromeDriver();
         driver.get("https://www.phptravels.com/demo");
@@ -32,7 +29,7 @@ public class PHPLoginPage {
         driver.findElement(By.xpath("//input[@name='last_name']")).sendKeys("user", ENTER);
         driver.findElement(By.xpath("//input[@name='business_name']")).sendKeys("Food Business", ENTER);
         driver.findElement(By.xpath("//input[@name='email']")).sendKeys("automationtestuser2024@gmail.com", ENTER);
-        WebDriver.Timeouts timeouts = driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        Thread.sleep(2000);
         number1 = driver.findElement(By.id("numb1"));
         number2 = driver.findElement(By.id("numb2"));
         String s = number1.getText();
